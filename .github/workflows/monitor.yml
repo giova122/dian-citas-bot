@@ -6,7 +6,12 @@ on:
     # decide adentro si consulta o no, y cuantas veces, segun el dia y la
     # hora de Bogota. Ver "RITMO ADAPTATIVO" en monitor_dian.py.
     - cron: "*/5 * * * *"
-  workflow_dispatch: {}   # permite lanzarlo a mano desde la pestana Actions
+  workflow_dispatch:      # permite lanzarlo a mano desde la pestana Actions
+    inputs:
+      probar_correo:
+        description: "Enviar un correo de prueba"
+        type: boolean
+        default: false
 
 # Necesario para que el job pueda guardar state.json de vuelta en el repo
 permissions:
@@ -38,6 +43,10 @@ jobs:
         env:
           CALLMEBOT_PHONE: ${{ secrets.CALLMEBOT_PHONE }}
           CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_PASS: ${{ secrets.GMAIL_PASS }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          DIAN_PROBAR_CORREO: ${{ inputs.probar_correo && '1' || '' }}
           DIAN_TIPO_PERSONA: "1"    # 1 = Persona Natural
           DIAN_TIPO_ATENCION: "2"   # 2 = Videoatencion
           DIAN_CATEGORIA: "13"      # 13 = Devoluciones
