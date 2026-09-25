@@ -61,6 +61,8 @@ import sys
 import time
 import html as htmllib
 import urllib.parse
+import smtplib
+from email.mime.text import MIMEText
 from datetime import datetime, timezone, timedelta
 
 import requests
@@ -92,6 +94,14 @@ FILTRO = os.environ.get("DIAN_FILTRO", "").strip()
 # CallMeBot
 WA_PHONE = os.environ.get("CALLMEBOT_PHONE", "").strip()
 WA_APIKEY = os.environ.get("CALLMEBOT_APIKEY", "").strip()
+
+# Correo (Gmail con contrasena de aplicacion)
+GMAIL_USER = os.environ.get("GMAIL_USER", "").strip()
+GMAIL_PASS = os.environ.get("GMAIL_PASS", "").replace(" ", "").strip()
+MAIL_TO = os.environ.get("MAIL_TO", "").strip() or GMAIL_USER
+
+# Poner "1" para mandar un correo de prueba al iniciar (desde Run workflow)
+PROBAR_CORREO = os.environ.get("DIAN_PROBAR_CORREO", "").strip().lower() in ("1", "true")
 
 STATE_FILE = os.environ.get("DIAN_STATE_FILE", "state.json")
 
@@ -321,7 +331,32 @@ def limpiar(txt):
 # WhatsApp (CallMeBot)
 # ----------------------------------------------------------------------------
 
+def enviar_correo(texto):
+    """Manda el aviso por correo (Gmail). Devuelve True si salio bien."""
+    if not GMAIL_USER or not GMAIL_PASS or not MAIL_TO:
+        log("AVISO: faltan GMAIL_USER / GMAIL_PASS / MAIL_TO, no se envia correo.")
+        return False
+    asunto = texto.strip().splitlines()[0][:120] if texto.strip() else "Bot DIAN"
+    msg = MIMEText(texto, "plain", "utf-8")
+    msg["Subject"] = "\U0001F6A8 " + asunto
+    msg["From"] = GMAIL_USER
+    msg["To"] = MAIL_TO
+    for intento in range(1, 4):
+        try:
+            with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=TIMEOUT) as srv:
+                srv.login(GMAIL_USER, GMAIL_PASS)
+                srv.sendmail(GMAIL_USER, [MAIL_TO], msg.as_string())
+            log("Correo enviado a {}.".format(MAIL_TO))
+            return True
+        except Exception as e:
+            log("Error enviando correo (intento {}): {}".format(intento, e))
+            time.sleep(3 * intento)
+    return False
+
+
 def enviar_whatsapp(texto):
+    # Primero el correo (el WhatsApp de CallMeBot puede fallar)
+    enviar_correo(texto)
     if not WA_PHONE or not WA_APIKEY:
         log("AVISO: faltan CALLMEBOT_PHONE / CALLMEBOT_APIKEY, no se envia nada.")
         log("Mensaje que se habria enviado:\n" + texto)
@@ -414,6 +449,14 @@ def avisar(tramites, st):
 
 
 def main():
+    if PROBAR_CORREO:
+        ok = enviar_correo(
+            "PRUEBA Bot DIAN: el aviso por correo funciona\n\n"
+            "Si recibes este correo, cuando aparezca cupo te llegara un aviso asi.\n"
+            "({})".format(ahora()))
+        log("Correo de prueba: {}".format("OK" if ok else "FALLO"))
+        if not ok:
+            return 1
     st = leer_estado()
     now = ahora_dt()
 
