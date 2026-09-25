@@ -41,7 +41,7 @@ jobs:
           DIAN_TIPO_PERSONA: "1"    # 1 = Persona Natural
           DIAN_TIPO_ATENCION: "2"   # 2 = Videoatencion
           DIAN_CATEGORIA: "13"      # 13 = Devoluciones
-          DIAN_FILTRO: ""           # vacio = cualquier ciudad
+          DIAN_FILTRO: "Bogot"           # vacio = cualquier ciudad
           # Una corrida lanzada a mano siempre consulta, sin importar la hora.
           # Las automaticas respetan el ritmo adaptativo del script.
           DIAN_FORZAR: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}
