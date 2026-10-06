@@ -1,8 +1,8 @@
 {
   "avisados": [],
-  "fallos": 1,
-  "ultima_revision": "2026-10-06 09:45:20",
-  "ultimo_error": "HTTPSConnectionPool(host='agendamiento.dian.gov.co', port=443): Read timed out. (read timeout=30)",
+  "fallos": 0,
+  "ultima_revision": "2026-10-06 10:02:42",
+  "ultimo_error": null,
   "aviso_fallo_enviado": false,
   "bloqueos": 0,
   "ultimo_plan": "MEDIA"
