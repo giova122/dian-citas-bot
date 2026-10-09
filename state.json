@@ -1,9 +1,7 @@
 {
-  "avisados": [
-    "\"Bogotá - Solicitud de devolución y/o compensación Vehículos eléctricos o Híbridos persona natural\""
-  ],
+  "avisados": [],
   "fallos": 0,
-  "ultima_revision": "2026-10-09 14:33:55",
+  "ultima_revision": "2026-10-09 14:53:47",
   "ultimo_error": null,
   "aviso_fallo_enviado": false,
   "bloqueos": 0,
