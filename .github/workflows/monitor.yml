@@ -53,7 +53,7 @@ jobs:
           DIAN_FILTRO: "Bogot"           # vacio = cualquier ciudad
           # Una corrida lanzada a mano siempre consulta, sin importar la hora.
           # Las automaticas respetan el ritmo adaptativo del script.
-          DIAN_FORZAR: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}
+          DIAN_FORZAR: ""
         run: python monitor_dian.py
 
       - name: Guardar el estado
