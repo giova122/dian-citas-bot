@@ -1,8 +1,8 @@
 {
   "avisados": [],
-  "fallos": 0,
-  "ultima_revision": "2026-10-20 22:30:18",
-  "ultimo_error": null,
+  "fallos": 1,
+  "ultima_revision": "2026-10-20 23:00:24",
+  "ultimo_error": "503 Server Error: Service Unavailable for url: https://agendamiento.dian.gov.co/",
   "aviso_fallo_enviado": false,
   "bloqueos": 0,
   "ultimo_plan": "MINIMA"
