@@ -1,9 +1,9 @@
 {
   "avisados": [],
   "fallos": 0,
-  "ultima_revision": "2026-10-29 09:00:21",
-  "ultimo_error": null,
+  "ultima_revision": "2026-10-29 09:10:25",
+  "ultimo_error": "ObtenerConfiguracion devolvio HTTP 403",
   "aviso_fallo_enviado": false,
-  "bloqueos": 0,
+  "bloqueos": 1,
   "ultimo_plan": "NORMAL"
 }
