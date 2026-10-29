@@ -1,7 +1,7 @@
 {
   "avisados": [],
-  "fallos": 4,
-  "ultima_revision": "2026-10-29 05:00:23",
+  "fallos": 5,
+  "ultima_revision": "2026-10-29 05:30:34",
   "ultimo_error": "Expecting property name enclosed in double quotes: line 1 column 2 (char 1)",
   "aviso_fallo_enviado": false,
   "bloqueos": 0,
