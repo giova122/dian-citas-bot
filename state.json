@@ -2,9 +2,9 @@
   "avisados": [
     "Bogotá \"Solicitud de devolución y/o compensación persona natural\"."
   ],
-  "fallos": 0,
-  "ultima_revision": "2026-10-30 09:41:34",
-  "ultimo_error": null,
+  "fallos": 1,
+  "ultima_revision": "2026-10-30 09:46:53",
+  "ultimo_error": "HTTPSConnectionPool(host='agendamiento.dian.gov.co', port=443): Read timed out. (read timeout=30)",
   "aviso_fallo_enviado": false,
   "bloqueos": 0,
   "ultimo_plan": "ALTA"
