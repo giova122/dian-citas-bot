@@ -1,9 +1,7 @@
 {
-  "avisados": [
-    "Bogotá \"Solicitud de devolución y/o compensación persona natural\"."
-  ],
+  "avisados": [],
   "fallos": 0,
-  "ultima_revision": "2026-11-13 10:00:45",
+  "ultima_revision": "2026-11-13 10:07:59",
   "ultimo_error": null,
   "aviso_fallo_enviado": false,
   "bloqueos": 0,
