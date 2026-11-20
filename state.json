@@ -3,8 +3,8 @@
     "\"Bogotá - Solicitud de devolución y/o compensación Vehículos eléctricos o Híbridos persona natural\"",
     "Bogotá \"Solicitud de devolución y/o compensación persona natural\"."
   ],
-  "fallos": 2,
-  "ultima_revision": "2026-11-20 10:46:22",
+  "fallos": 3,
+  "ultima_revision": "2026-11-20 10:51:29",
   "ultimo_error": "HTTPSConnectionPool(host='agendamiento.dian.gov.co', port=443): Read timed out. (read timeout=30)",
   "aviso_fallo_enviado": false,
   "bloqueos": 0,
